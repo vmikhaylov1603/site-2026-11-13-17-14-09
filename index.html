@@ -8,34 +8,34 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Georgia, "Times New Roman", serif;
-      background: #f7f3ea;
-      color: #2b2118;
+      background: #8f8f8a;
+      color: #3a3a37;
       line-height: 1.7;
     }
     header {
-      background: #3b2a1a;
-      color: #f7f3ea;
+      background: #4a4a46;
+      color: #a8a8a2;
       text-align: center;
       padding: 80px 20px 60px;
     }
     header h1 { font-size: 3rem; letter-spacing: 2px; }
-    header p { font-style: italic; opacity: 0.85; margin-top: 10px; }
+    header p { font-style: italic; opacity: 0.7; margin-top: 10px; }
     nav {
       position: sticky;
       top: 0;
-      background: #5a4129;
+      background: #5e5e59;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       z-index: 10;
     }
     nav a {
-      color: #f7f3ea;
+      color: #b4b4ae;
       text-decoration: none;
       padding: 14px 18px;
       transition: background 0.2s;
     }
-    nav a:hover { background: #7a5a36; }
+    nav a:hover { background: #6f6f69; }
     section {
       max-width: 900px;
       margin: 0 auto;
@@ -43,13 +43,13 @@
     }
     section h2 {
       font-size: 2rem;
-      color: #5a4129;
+      color: #4a4a46;
       margin-bottom: 20px;
-      border-bottom: 2px solid #c9a86a;
+      border-bottom: 2px solid #6e6e68;
       padding-bottom: 8px;
     }
     section p { margin-bottom: 16px; }
-    .timeline { list-style: none; border-left: 3px solid #c9a86a; padding-left: 24px; }
+    .timeline { list-style: none; border-left: 3px solid #6e6e68; padding-left: 24px; }
     .timeline li { margin-bottom: 20px; position: relative; }
     .timeline li::before {
       content: "";
@@ -58,32 +58,32 @@
       top: 8px;
       width: 12px;
       height: 12px;
-      background: #5a4129;
+      background: #4a4a46;
       border-radius: 50%;
     }
-    .timeline strong { color: #5a4129; }
+    .timeline strong { color: #4a4a46; }
     .works {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
     }
     .card {
-      background: #fff;
-      border: 1px solid #e0d2b4;
+      background: #7d7d78;
+      border: 1px solid #6a6a65;
       border-radius: 8px;
       padding: 22px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      box-shadow: none;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 6px 16px rgba(0,0,0,0.12);
     }
-    .card h3 { color: #5a4129; margin-bottom: 6px; }
-    .card span { font-size: 0.9rem; color: #8a7050; }
+    .card h3 { color: #3a3a37; margin-bottom: 6px; }
+    .card span { font-size: 0.9rem; color: #55554f; }
     .quote-box {
-      background: #efe6d2;
-      border-left: 5px solid #5a4129;
+      background: #7a7a75;
+      border-left: 5px solid #4a4a46;
       padding: 30px;
       border-radius: 6px;
       font-size: 1.2rem;
@@ -93,8 +93,8 @@
     }
     button {
       margin-top: 20px;
-      background: #5a4129;
-      color: #f7f3ea;
+      background: #4a4a46;
+      color: #a8a8a2;
       border: none;
       padding: 12px 26px;
       font-size: 1rem;
@@ -102,17 +102,60 @@
       cursor: pointer;
       font-family: inherit;
     }
-    button:hover { background: #7a5a36; }
+    button:hover { background: #5e5e59; }
     footer {
-      background: #3b2a1a;
-      color: #f7f3ea;
+      background: #4a4a46;
+      color: #9a9a94;
       text-align: center;
       padding: 30px 20px;
       font-size: 0.95rem;
     }
+
+    /* Погодные эффекты: дождь и осенние листья */
+    .weather {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .raindrop {
+      position: absolute;
+      top: -80px;
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(220, 226, 232, 0), rgba(220, 226, 232, 0.55));
+      animation-name: rain-fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes rain-fall {
+      to { transform: translateY(calc(100vh + 160px)); }
+    }
+    .leaf {
+      position: absolute;
+      top: -40px;
+      font-size: 18px;
+      opacity: 0.8;
+      user-select: none;
+      animation-name: leaf-fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes leaf-fall {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      25%  { transform: translate(40px, 25vh) rotate(90deg); }
+      50%  { transform: translate(-30px, 50vh) rotate(180deg); }
+      75%  { transform: translate(35px, 75vh) rotate(270deg); }
+      100% { transform: translate(-10px, calc(100vh + 80px)) rotate(360deg); }
+    }
+
     @media (max-width: 600px) {
       header h1 { font-size: 2.1rem; }
       section h2 { font-size: 1.6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .weather { display: none; }
     }
   </style>
 </head>
@@ -227,6 +270,40 @@
 
     button.addEventListener("click", showRandomQuote);
     showRandomQuote();
+
+    // Дождь и осенние листья
+    (function createWeather() {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const layer = document.createElement("div");
+      layer.className = "weather";
+      layer.setAttribute("aria-hidden", "true");
+      document.body.appendChild(layer);
+
+      const rand = (min, max) => Math.random() * (max - min) + min;
+
+      for (let i = 0; i < 90; i++) {
+        const drop = document.createElement("div");
+        drop.className = "raindrop";
+        drop.style.left = rand(0, 100) + "vw";
+        drop.style.animationDuration = rand(0.6, 1.2) + "s";
+        drop.style.animationDelay = rand(-2, 0) + "s";
+        drop.style.opacity = rand(0.3, 0.9);
+        layer.appendChild(drop);
+      }
+
+      const leafSymbols = ["🍂", "🍁", "🍂", "🍁"];
+      for (let i = 0; i < 18; i++) {
+        const leaf = document.createElement("div");
+        leaf.className = "leaf";
+        leaf.textContent = leafSymbols[i % leafSymbols.length];
+        leaf.style.left = rand(0, 100) + "vw";
+        leaf.style.animationDuration = rand(8, 16) + "s";
+        leaf.style.animationDelay = rand(-16, 0) + "s";
+        leaf.style.fontSize = rand(14, 24) + "px";
+        layer.appendChild(leaf);
+      }
+    })();
   </script>
 
 </body>
