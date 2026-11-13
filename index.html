@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Александр Сергеевич Пушкин</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7f3ea;
+      color: #2b2118;
+      line-height: 1.7;
+    }
+    header {
+      background: #3b2a1a;
+      color: #f7f3ea;
+      text-align: center;
+      padding: 80px 20px 60px;
+    }
+    header h1 { font-size: 3rem; letter-spacing: 2px; }
+    header p { font-style: italic; opacity: 0.85; margin-top: 10px; }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #5a4129;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      z-index: 10;
+    }
+    nav a {
+      color: #f7f3ea;
+      text-decoration: none;
+      padding: 14px 18px;
+      transition: background 0.2s;
+    }
+    nav a:hover { background: #7a5a36; }
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    section h2 {
+      font-size: 2rem;
+      color: #5a4129;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #c9a86a;
+      padding-bottom: 8px;
+    }
+    section p { margin-bottom: 16px; }
+    .timeline { list-style: none; border-left: 3px solid #c9a86a; padding-left: 24px; }
+    .timeline li { margin-bottom: 20px; position: relative; }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -32px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: #5a4129;
+      border-radius: 50%;
+    }
+    .timeline strong { color: #5a4129; }
+    .works {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e0d2b4;
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .card h3 { color: #5a4129; margin-bottom: 6px; }
+    .card span { font-size: 0.9rem; color: #8a7050; }
+    .quote-box {
+      background: #efe6d2;
+      border-left: 5px solid #5a4129;
+      padding: 30px;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      font-style: italic;
+      white-space: pre-line;
+      min-height: 140px;
+    }
+    button {
+      margin-top: 20px;
+      background: #5a4129;
+      color: #f7f3ea;
+      border: none;
+      padding: 12px 26px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    button:hover { background: #7a5a36; }
+    footer {
+      background: #3b2a1a;
+      color: #f7f3ea;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.1rem; }
+      section h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Александр Сергеевич Пушкин</h1>
+    <p>Солнце русской поэзии · 1799 – 1837</p>
+  </header>
+
+  <nav>
+    <a href="#bio">Биография</a>
+    <a href="#works">Произведения</a>
+    <a href="#quotes">Цитаты</a>
+    <a href="#legacy">Наследие</a>
+  </nav>
+
+  <section id="bio">
+    <h2>Биография</h2>
+    <p>
+      Александр Сергеевич Пушкин родился 26 мая (6 июня по новому стилю) 1799 года в Москве
+      в дворянской семье. Он считается основоположником новой русской литературы и создателем
+      современного русского литературного языка.
+    </p>
+    <ul class="timeline">
+      <li><strong>1811</strong> — поступает в Царскосельский лицей, где проявляется его поэтический талант.</li>
+      <li><strong>1820</strong> — выходит поэма «Руслан и Людмила».</li>
+      <li><strong>1820–1824</strong> — ссылка на юг России, встречи с декабристами, работа над «Кавказским пленником» и «Бахчисарайским фонтаном».</li>
+      <li><strong>1825</strong> — ссылка в Михайловское, создание трагедии «Борис Годунов».</li>
+      <li><strong>1831</strong> — женитьба на Наталье Гончаровой.</li>
+      <li><strong>1833</strong> — работа над «Историей Пугачёва» и поэмой «Медный всадник».</li>
+      <li><strong>10 февраля (29 января) 1837</strong> — гибель на дуэли с Жоржем Дантесом в Петербурге.</li>
+    </ul>
+  </section>
+
+  <section id="works">
+    <h2>Произведения</h2>
+    <div class="works">
+      <div class="card">
+        <h3>Евгений Онегин</h3>
+        <span>роман в стихах, 1825–1832</span>
+        <p>Главный труд поэта, в котором отражена жизнь русского дворянства.</p>
+      </div>
+      <div class="card">
+        <h3>Борис Годунов</h3>
+        <span>трагедия, 1825</span>
+        <p>Историческая драма о царе, поднявшемся к власти и мучимом совестью.</p>
+      </div>
+      <div class="card">
+        <h3>Капитанская дочка</h3>
+        <span>повесть, 1836</span>
+        <p>История Петра Гринёва на фоне восстания Емельяна Пугачёва.</p>
+      </div>
+      <div class="card">
+        <h3>Медный всадник</h3>
+        <span>поэма, 1833</span>
+        <p>Философское размышление о судьбе Петра I, Петербурга и маленького человека.</p>
+      </div>
+      <div class="card">
+        <h3>Сказка о царе Салтане</h3>
+        <span>сказка, 1832</span>
+        <p>Волшебная история о царевиче Гвидоне, любви и справедливости.</p>
+      </div>
+      <div class="card">
+        <h3>Пиковая дама</h3>
+        <span>повесть, 1834</span>
+        <p>Мистическая история о страсти к игре и тайне трёх карт.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="quotes">
+    <h2>Цитаты</h2>
+    <div class="quote-box" id="quoteText"></div>
+    <button id="newQuote">Другая цитата</button>
+  </section>
+
+  <section id="legacy">
+    <h2>Наследие</h2>
+    <p>
+      Пушкин оказал огромное влияние на русскую литературу, музыку, живопись и театр.
+      Его произведения были положены на музыку Чайковским, Глинкой и Римским-Корсаковым,
+      а сам он стал символом русской культуры.
+    </p>
+    <p>
+      День рождения поэта, 6 июня, в России отмечается как День русского языка.
+    </p>
+  </section>
+
+  <footer>
+    <p>© Посвящено памяти Александра Сергеевича Пушкина</p>
+  </footer>
+
+  <script>
+    const quotes = [
+      "Я помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолётное виденье,\nКак гений чистой красоты.",
+      "Я памятник себе воздвиг нерукотворный,\nК нему не зарастёт народная тропа.",
+      "Мы все учились понемногу\nЧему-нибудь и как-нибудь.",
+      "Не дай мне бог сойти с ума.\nНет, лучше посох и сума.",
+      "Миг вожделенный настал: окончен мой труд многотрудный.",
+      "На свете счастья нет, но есть покой и воля.",
+      "Что в имени тебе моём?\nОно умрёт, как шум печальный\nВолны, плеснувшей в берег дальний."
+    ];
+
+    const quoteBox = document.getElementById("quoteText");
+    const button = document.getElementById("newQuote");
+
+    function showRandomQuote() {
+      const index = Math.floor(Math.random() * quotes.length);
+      quoteBox.textContent = quotes[index];
+    }
+
+    button.addEventListener("click", showRandomQuote);
+    showRandomQuote();
+  </script>
+
+</body>
+</html>
