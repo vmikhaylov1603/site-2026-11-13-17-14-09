@@ -138,6 +138,8 @@
       font-size: 18px;
       opacity: 0.8;
       user-select: none;
+      pointer-events: auto;
+      cursor: pointer;
       animation-name: leaf-fall;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
@@ -148,6 +150,11 @@
       50%  { transform: translate(-30px, 50vh) rotate(180deg); }
       75%  { transform: translate(35px, 75vh) rotate(270deg); }
       100% { transform: translate(-10px, calc(100vh + 80px)) rotate(360deg); }
+    }
+    .leaf-piece {
+      position: absolute;
+      pointer-events: none;
+      border-radius: 50%;
     }
 
     @media (max-width: 600px) {
@@ -282,6 +289,42 @@
 
       const rand = (min, max) => Math.random() * (max - min) + min;
 
+      // Взрыв листа на мелкие части
+      const pieceColors = ["#8b4513", "#c0692b", "#d4a017", "#a0522d", "#e0b050"];
+      function explodeLeaf(leaf) {
+        const r = leaf.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        leaf.remove();
+
+        const count = 14;
+        for (let i = 0; i < count; i++) {
+          const piece = document.createElement("div");
+          piece.className = "leaf-piece";
+          const size = rand(4, 9);
+          piece.style.width = size + "px";
+          piece.style.height = size + "px";
+          piece.style.left = cx + "px";
+          piece.style.top = cy + "px";
+          piece.style.background = pieceColors[i % pieceColors.length];
+          layer.appendChild(piece);
+
+          const angle = (Math.PI * 2 * i) / count + rand(-0.3, 0.3);
+          const dist = rand(50, 120);
+          const dx = Math.cos(angle) * dist;
+          const dy = Math.sin(angle) * dist;
+
+          const anim = piece.animate(
+            [
+              { transform: "translate(-50%, -50%) scale(1)", opacity: 1 },
+              { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0.2)`, opacity: 0 }
+            ],
+            { duration: rand(500, 900), easing: "ease-out", fill: "forwards" }
+          );
+          anim.onfinish = () => piece.remove();
+        }
+      }
+
       for (let i = 0; i < 90; i++) {
         const drop = document.createElement("div");
         drop.className = "raindrop";
@@ -301,6 +344,7 @@
         leaf.style.animationDuration = rand(8, 16) + "s";
         leaf.style.animationDelay = rand(-16, 0) + "s";
         leaf.style.fontSize = rand(14, 24) + "px";
+        leaf.addEventListener("click", () => explodeLeaf(leaf));
         layer.appendChild(leaf);
       }
     })();
